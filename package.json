@@ -1,6 +1,6 @@
 {
   "name": "mindstate-plugin-mongodb",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Mindstate plugin to handle MongoDB databases",
   "main": "index.js",
   "repository": {

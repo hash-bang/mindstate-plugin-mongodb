@@ -14,7 +14,7 @@ module.exports = {
 			.then(function(next) {
 				// Sanity checks {{{
 				if (!mindstate.config.mongodb.enabled) {
-					if (mindstate.program.verbose) console.log(colors.grey('MongoDB backup is disabled'));
+					if (mindstate.verbose) console.log(colors.blue('[MongoDB]'), 'MongoDB backup is disabled');
 					return next('SKIP');
 				}
 				next();
@@ -24,7 +24,7 @@ module.exports = {
 				// Check for binary {{{
 				which('mongodump', function(err) {
 					if (err) {
-						if (mindstate.program.verbose) console.log(colors.grey('`mongodump` is not in PATH'));
+						if (mindstate.verbose) console.log(colors.blue('[MongoDB]'), '`mongodump` is not in PATH');
 						return next('SKIP');
 					}
 					next();
@@ -32,7 +32,7 @@ module.exports = {
 				// }}}
 			})
 			.then(function(next) {
-				if (mindstate.program.verbose) console.log(colors.blue('[MongoDB]'), 'Run', mindstate.config.mongodb.command);
+				if (mindstate.verbose) console.log(colors.blue('[MongoDB]'), 'Run', mindstate.config.mongodb.command);
 				next();
 			})
 			.exec(mindstate.config.mongodb.command)
